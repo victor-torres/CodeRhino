@@ -10,7 +10,7 @@ public class RunCommand {
     /**
      * Runs a command in user's operating system.
      * @param command Command line String.
-     * @return Map<String, String> with STD Input and Error command's output.
+     * @return HashMap<String, String> with STD Input and Error command's output.
      */
     public static HashMap<String, String> RunCommand(String command) throws IOException {
 
