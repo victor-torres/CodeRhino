@@ -23,11 +23,11 @@ import java.applet.*;
 public final class SerialPortList extends Applet {
 
     private static final String DEVICES_PATH = "/dev";
-    private static SerialNativeInterface serialInterface = new SerialNativeInterface();
+    private static final SerialNativeInterface serialInterface = new SerialNativeInterface();
 
     /**
      * Lists available serial ports in OS.
-     * @returns String of available ports comma separated.
+     * @return String of available ports comma separated.
      */
     public static String getPortNames() {
 
@@ -52,7 +52,7 @@ public final class SerialPortList extends Applet {
 
     /**
      * Lists available serial ports in Linux.
-     * @returns String array of available ports.
+     * @return String[] Array of available ports.
      */
     public static String[] getLinuxPortNames() {
 
@@ -66,7 +66,7 @@ public final class SerialPortList extends Applet {
 
     /**
      * Lists available serial ports in Windows.
-     * @returns String array of available ports.
+     * @return String[] Array of available ports.
      */
     public static String[] getWindowsPortNames() {
 
@@ -88,7 +88,7 @@ public final class SerialPortList extends Applet {
 
     /**
      * Lists available serial ports in Mac OS.
-     * @returns String array of available ports.
+     * @return String[] Array of available ports.
      */
     public static String[] getMacPortNames() {
 
@@ -112,7 +112,11 @@ public final class SerialPortList extends Applet {
                 final TreeSet<String> portsTree = new TreeSet<>();
                 portsList = new ArrayList<>();
                 for (File file : files) {
-                    if (!file.isDirectory() && !file.isFile() && file.getName().contains(key)) {
+                    if (
+                        !file.isDirectory() &&
+                        !file.isFile() &&
+                        file.getName().contains(key)
+                    ) {
                         portsTree.add("/dev/" + file.getName());
                     }
                 }

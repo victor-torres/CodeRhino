@@ -3,7 +3,8 @@ package coderhino;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class RunCommand {
 
@@ -11,6 +12,7 @@ public class RunCommand {
      * Runs a command in user's operating system.
      * @param command Command line String.
      * @return HashMap<String, String> with STD Input and Error command's output.
+     * @throws java.io.IOException
      */
     public static HashMap<String, String> RunCommand(String command) throws IOException {
 
@@ -22,7 +24,7 @@ public class RunCommand {
         String line;
         String stdIn = "";
         String stdEr = "";
-        HashMap<String, String> output = new HashMap<String, String>();
+        HashMap<String, String> output = new HashMap<>();
 
         try {
             proc = Runtime.getRuntime().exec(command);
@@ -40,7 +42,7 @@ public class RunCommand {
             output.put("stdError", stdEr);
         }
         catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
 
         return output;

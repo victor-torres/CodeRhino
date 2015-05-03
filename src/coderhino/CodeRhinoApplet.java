@@ -1,4 +1,3 @@
-
 package coderhino;
 
 import java.applet.Applet;
@@ -36,7 +35,6 @@ public class CodeRhinoApplet extends Applet {
      * Schedules a download from file URL to OS's basedir.
      * @param filename The file name desired on disk after download.
      * @param url The file URL.
-     * @return Void.
      */
     public void downloadFile(String filename, String url) {
         downloadFilename = filename;
@@ -55,7 +53,6 @@ public class CodeRhinoApplet extends Applet {
     /**
      * Schedules a command to run.
      * @param command Command line String.
-     * @return Void.
      */
     public void runCommand(String command) {
         commandToRun = command;
@@ -80,7 +77,6 @@ public class CodeRhinoApplet extends Applet {
 
     /**
      * Schedules a serial port scanning.
-     * @return Void.
      */
     public void scanPorts() {
         scan = true;
@@ -102,6 +98,7 @@ public class CodeRhinoApplet extends Applet {
         return portsList;
     }
 
+    @Override
     public void init() {
 
         ready = true;
@@ -110,15 +107,23 @@ public class CodeRhinoApplet extends Applet {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
+            @Override
             public void run() {
 
                 if(download){
                     try {
-                        DownloadFiles.DownloadToDisk(downloadFilename, downloadURL);
+                        DownloadFiles.DownloadToDisk(
+                                downloadFilename,
+                                downloadURL
+                        );
                     } catch (MalformedURLException ex) {
-                        Logger.getLogger(CodeRhinoApplet.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(
+                                CodeRhinoApplet.class.getName()
+                        ).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
-                        Logger.getLogger(CodeRhinoApplet.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(
+                                CodeRhinoApplet.class.getName()
+                        ).log(Level.SEVERE, null, ex);
                     }
                     download = false;
                 }
@@ -126,7 +131,9 @@ public class CodeRhinoApplet extends Applet {
                     try {
                         commandOutput = CodeRhino.runCommand(commandToRun);
                     } catch (IOException ex) {
-                        Logger.getLogger(CodeRhinoApplet.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(
+                                CodeRhinoApplet.class.getName()
+                        ).log(Level.SEVERE, null, ex);
                     }
                     run = false;
                 }

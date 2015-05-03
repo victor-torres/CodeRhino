@@ -1,10 +1,9 @@
-
 package coderhino;
+
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.*;
+import java.util.HashMap;
 
 public class CodeRhino {
 
@@ -15,11 +14,7 @@ public class CodeRhino {
     public static String getBaseDir() {
 
         String basedir = (String) AccessController.doPrivileged(
-          new PrivilegedAction() {
-            public Object run() {
-                return System.getProperty("java.io.tmpdir");
-            }
-          }
+                (PrivilegedAction) () -> System.getProperty("java.io.tmpdir")
         );
 
         return basedir;
@@ -35,11 +30,11 @@ public class CodeRhino {
         String os;
         os = System.getProperty("os.name").toLowerCase();
 
-        if(os.indexOf("win") >= 0){
+        if(os.contains("win")){
             return "windows";
-        } else if(os.indexOf("linux") >= 0) {
+        } else if(os.contains("linux")) {
             return "linux";
-        } else if(os.indexOf("mac") >= 0) {
+        } else if(os.contains("mac")) {
             return "mac";
         } else {
             return "not-supported";
@@ -53,11 +48,7 @@ public class CodeRhino {
     public static String getPorts() {
 
         String ports = (String) AccessController.doPrivileged(
-          new PrivilegedAction() {
-            public Object run() {
-                return SerialPortList.getPortNames();
-            }
-          }
+                (PrivilegedAction) () -> SerialPortList.getPortNames()
         );
 
         return ports;
@@ -65,10 +56,12 @@ public class CodeRhino {
 
     /**
      * Runs command line on user's operating system.
-     * @returns String JSON with STD Input and STD Error output.
+     * @param command Command line String.
+     * @return String JSON with STD Input and STD Error output.
+     * @throws java.io.IOException
      */
     public static String runCommand(String command) throws IOException {
-        Map<String, String> dictionary = RunCommand.RunCommand(command);
+        HashMap<String, String> dictionary = RunCommand.RunCommand(command);
         String stdInput = dictionary.get("stdInput");
         String stdError = dictionary.get("stdError");
         String output = "";
