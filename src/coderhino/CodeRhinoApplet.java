@@ -9,7 +9,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class applet extends Applet {
+public class CodeRhinoApplet extends Applet {
 
     public boolean ready = false;
 
@@ -28,7 +28,7 @@ public class applet extends Applet {
      * Tells if the Applet is already loaded and ready to work.
      * @return boolean.
      */
-    public booelan isReady() {
+    public boolean isReady() {
         return ready;
     }
 
@@ -59,7 +59,7 @@ public class applet extends Applet {
      */
     public void runCommand(String command) {
         commandToRun = command;
-        runCommand = true;
+        run = true;
     }
 
     /**
@@ -114,19 +114,19 @@ public class applet extends Applet {
 
                 if(download){
                     try {
-                        CodeRhino.DownloadToDisk(downloadFilename, downloadURL);
+                        DownloadFiles.DownloadToDisk(downloadFilename, downloadURL);
                     } catch (MalformedURLException ex) {
-                        Logger.getLogger(applet.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CodeRhinoApplet.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
-                        Logger.getLogger(applet.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CodeRhinoApplet.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     download = false;
                 }
                 if(run) {
                     try {
-                        commandOutput CodeRhino.runCommand(commandToRun);
+                        commandOutput = CodeRhino.runCommand(commandToRun);
                     } catch (IOException ex) {
-                        Logger.getLogger(applet.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CodeRhinoApplet.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     run = false;
                 }

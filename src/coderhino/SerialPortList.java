@@ -29,10 +29,10 @@ public final class SerialPortList extends Applet {
      * Lists available serial ports in OS.
      * @returns String of available ports comma separated.
      */
-    public static String getPortNames(String osName) {
+    public static String getPortNames() {
 
-        String portNames;
-        String osName = getOS()
+        String[] portNames = new String[0];
+        String osName = CodeRhino.getOS();
         switch (osName) {
             case "windows":
                 portNames = getWindowsPortNames();
@@ -44,8 +44,7 @@ public final class SerialPortList extends Applet {
                 portNames = getMacPortNames();
                 break;
             case "not-supported":
-                portNames = "Your operating system is not supported currently.";
-                break;
+                return "Your operating system is not supported currently.";
         }
 
         return StringUtils.join(portNames, ",");

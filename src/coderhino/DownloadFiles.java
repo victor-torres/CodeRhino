@@ -15,17 +15,17 @@ public class DownloadFiles {
      * @param url The file URL.
      * @return Void.
      */
-    private static void DownloadToDisk(String filename, String url) throws MalformedURLException, IOException{
+    public static void DownloadToDisk(String filename, String url) throws MalformedURLException, IOException{
 
         URL fileURL = new URL(url);
-        String basedir = getBaseDir();
+        String basedir = CodeRhino.getBaseDir();
         FileOutputStream fileOS;
 
         try (InputStream is = fileURL.openStream()) {
             fileOS = new FileOutputStream(basedir);
             int bytes;
             while ((bytes = is.read()) != -1) {
-                fileos.write(bytes);
+                fileOS.write(bytes);
             }
         }
 

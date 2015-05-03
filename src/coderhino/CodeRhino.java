@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.*;
 
 public class CodeRhino {
 
@@ -54,7 +55,7 @@ public class CodeRhino {
         String ports = (String) AccessController.doPrivileged(
           new PrivilegedAction() {
             public Object run() {
-                return SerialPortList.getPortNames(getOS());
+                return SerialPortList.getPortNames();
             }
           }
         );
