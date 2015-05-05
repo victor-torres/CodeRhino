@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import netscape.javascript.JSObject;
 
 public class CodeRhinoApplet extends Applet {
 
@@ -16,13 +17,16 @@ public class CodeRhinoApplet extends Applet {
     public boolean download = false;
     public String downloadFilename = "";
     public String downloadURL = "";
+    public String downloadCallback = null;
 
     public boolean run = false;
     public String commandToRun ="";
     public String commandOutput = "";
+    public String runCallback = null;
 
     public boolean scan = false;
     public String portsList = "";
+    public String scanCallback = null;
 
     /**
      * Tells if the Applet is already loaded and ready to work.
@@ -30,6 +34,15 @@ public class CodeRhinoApplet extends Applet {
      */
     public boolean isReady() {
         return ready;
+    }
+    
+    /**
+     * Callbacks JavaScript function.
+     * @param callback JavaScript callback function name.
+     */
+    public void callback(String callback) {
+        JSObject win = JSObject.getWindow(this);
+        win.call(callback, new Object[] {});
     }
 
     /**
@@ -41,6 +54,18 @@ public class CodeRhinoApplet extends Applet {
         downloadFilename = filename;
         downloadURL = url;
         download = true;
+        downloadCallback = null;
+    }
+    
+    /**
+     * Schedules a download from file URL to OS's basedir with callback.
+     * @param filename The file name desired on disk after download.
+     * @param url The file URL.
+     * @param callback JavaScript callback function name.
+     */
+    public void downloadFile(String filename, String url, String callback) {
+        downloadFile(filename, url);
+        downloadCallback = callback;
     }
 
     /**
@@ -53,11 +78,22 @@ public class CodeRhinoApplet extends Applet {
 
     /**
      * Schedules a command to run.
-     * @param command Command line String.
+     * @param command Command line to execute.
      */
     public void runCommand(String command) {
         commandToRun = command;
         run = true;
+        runCallback = null;
+    }
+    
+    /**
+     * Schedules a command to run with callback.
+     * @param command Command line to execute.
+     * @param callback JavaScript callback function name.
+     */
+    public void runCommand(String command, String callback) {
+        runCommand(command);
+        runCallback = callback;
     }
 
     /**
@@ -81,6 +117,16 @@ public class CodeRhinoApplet extends Applet {
      */
     public void scanPorts() {
         scan = true;
+        scanCallback = null;
+    }
+    
+    /**
+     * Schedules a serial port scanning with callback.
+     * @param callback JavaScript callback function name.
+     */
+    public void scanPorts(String callback) {
+        scanPorts();
+        scanCallback = callback;
     }
 
     /**
@@ -136,6 +182,10 @@ public class CodeRhinoApplet extends Applet {
                         ).log(Level.SEVERE, null, ex);
                     }
                     download = false;
+                    if(downloadCallback != null) {
+                        callback(downloadCallback);
+                        downloadCallback = null;
+                    }
                 }
                 if(run) {
                     try {
@@ -146,10 +196,18 @@ public class CodeRhinoApplet extends Applet {
                         ).log(Level.SEVERE, null, ex);
                     }
                     run = false;
+                    if(runCallback != null) {
+                        callback(runCallback);
+                        runCallback = null;
+                    }
                 }
                 if(scan) {
                     portsList = CodeRhino.getPorts();
                     scan = false;
+                    if(scanCallback != null) {
+                        callback(scanCallback);
+                        scanCallback = null;
+                    }
                 }
             }
         };
