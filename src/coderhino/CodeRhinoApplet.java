@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 public class CodeRhinoApplet extends Applet {
 
     public boolean ready = false;
+    public String osName = "";
 
     public boolean download = false;
     public String downloadFilename = "";
@@ -98,10 +99,19 @@ public class CodeRhinoApplet extends Applet {
         return portsList;
     }
 
+    /**
+     * Gets Operating System's name.
+     * @return String Operating System's name or 'not-supported'.
+     */
+    public String getOS() {
+        return osName;
+    }
+
     @Override
     public void init() {
 
         ready = true;
+        osName = CodeRhino.getOS();
 
         // Creates Timer Task which will run every 500 ms.
         Timer timer = new Timer();

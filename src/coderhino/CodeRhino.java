@@ -22,7 +22,8 @@ public class CodeRhino {
     }
 
     /**
-     * Gets operating system name.
+     * Gets operating system's name.
+     * OS's name's in ['windows', 'linux', 'mac', 'not-suported'].
      * @return String OS's name or 'not-supported'.
      */
     public static String getOS(){
