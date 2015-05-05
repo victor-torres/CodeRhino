@@ -12,7 +12,8 @@
 hs_err_pid*
 
 # NetBeans IDE
-nbproject/
+dist/README.TXT
+nbproject/private/
 build/
 
 # javadoc
