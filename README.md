@@ -40,7 +40,7 @@ CodeRhino.getPorts();
 ### Download a remote file
 Start or schedule a file download.
 ```JavaScript
-CodeRhino.downloadFile("google_logo.png", "http://upload.wikimedia.org/wikipedia/commons/3/30/Googlelogo.png")
+CodeRhino.downloadFile("google_logo.png", "http://upload.wikimedia.org/wikipedia/commons/3/30/Googlelogo.png");
 ```
 Check if the download is done. If it's done, the following function should return `false`.
 ```JavaScript
@@ -83,7 +83,7 @@ But you can also use JavaScript callback functions with scanPorts(), downloadFil
 ```JavaScript
 function serialPortScanCallback() {
   var serialPorts = JSON.parse(CodeRhino.getPorts());
-  console.log(serialPorts);
+  console.log('Serial ports: ' + serialPorts.join(", "));
 }
 
 CodeRhino.scanPorts('serialPortScanCallback');
