@@ -35,7 +35,7 @@ public class CodeRhinoApplet extends Applet {
     public boolean isReady() {
         return ready;
     }
-    
+
     /**
      * Callbacks JavaScript function.
      * @param callback JavaScript callback function name.
@@ -56,7 +56,7 @@ public class CodeRhinoApplet extends Applet {
         download = true;
         downloadCallback = null;
     }
-    
+
     /**
      * Schedules a download from file URL to OS's basedir with callback.
      * @param filename The file name desired on disk after download.
@@ -77,6 +77,14 @@ public class CodeRhinoApplet extends Applet {
     }
 
     /**
+     * Gets last download's filename.
+     * @return String Last download's filename.
+     */
+    public String getFilename(){
+        return downloadFilename;
+    }
+
+    /**
      * Schedules a command to run.
      * @param command Command line to execute.
      */
@@ -85,7 +93,7 @@ public class CodeRhinoApplet extends Applet {
         run = true;
         runCallback = null;
     }
-    
+
     /**
      * Schedules a command to run with callback.
      * @param command Command line to execute.
@@ -119,7 +127,7 @@ public class CodeRhinoApplet extends Applet {
         scan = true;
         scanCallback = null;
     }
-    
+
     /**
      * Schedules a serial port scanning with callback.
      * @param callback JavaScript callback function name.
