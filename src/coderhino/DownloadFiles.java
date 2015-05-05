@@ -22,7 +22,7 @@ public class DownloadFiles {
         FileOutputStream fileOS;
 
         try (InputStream is = fileURL.openStream()) {
-            fileOS = new FileOutputStream(basedir);
+            fileOS = new FileOutputStream(basedir + filename);
             int bytes;
             while ((bytes = is.read()) != -1) {
                 fileOS.write(bytes);
