@@ -4,8 +4,8 @@ Java Applet for running backend executables through JavaScript and webpages.
 ## Embedding CodeRhino in your site
 Add these lines to the HTML of your site:
 ```
-<applet id="CodeRhino" archive="CodeRhino.jar, lib/jssc.jar, lib/apache-commons-lang.jar" 
-  code="coderhino.CodeRhinoApplet" MAYSCRIPT width="0" height="0"></applet>
+<applet id="CodeRhino" archive="CodeRhino.jar" code="coderhino.CodeRhinoApplet"
+  MAYSCRIPT width="0" height="0"></applet>
 ```
 
 ## Trying with JavaScript console
@@ -52,7 +52,7 @@ Check if the downloaded file is in your command output.
 ```
 CodeRhino.getCommandOutput()
 ```
-The command outputs are separated in Standard Input and Standard Error. They come in a JSON String format but we're currently trying to solve a problem when these Strings comes with multiple lines.
+The command outputs are separated in Standard Input and Standard Error dictionary in a JSON String format.
 
 `output = JSON.parse(CodeRhino.getCommandOutput())` could be used to parse the String into a JavaScript object so that you can access it as the following example:
 ```
