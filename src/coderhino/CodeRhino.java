@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.HashMap;
+import org.json.simple.JSONObject;
 
 public class CodeRhino {
 
@@ -63,13 +64,8 @@ public class CodeRhino {
      */
     public static String runCommand(String command) throws IOException {
         HashMap<String, String> dictionary = RunCommand.RunCommand(command);
-        String stdInput = dictionary.get("stdInput");
-        String stdError = dictionary.get("stdError");
-        String output = "";
-
-        output = output + "{\"stdInput\": \"" + stdInput + "\",";
-        output = output + "\"stdError\": \"" + stdError + "\"}";
-
+        JSONObject json = new JSONObject();
+        String output = json.toJSONString(dictionary);
         return output;
     }
 }
