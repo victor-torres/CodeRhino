@@ -1,11 +1,12 @@
 package coderhino;
 
 import jssc.SerialNativeInterface;
-import org.apache.commons.lang.StringUtils;
+import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.util.*;
 import java.applet.*;
+import org.json.simple.JSONArray;
 
 
 /**
@@ -31,23 +32,25 @@ public final class SerialPortList extends Applet {
      */
     public static String getPortNames() {
 
-        String[] portNames = new String[0];
+        String[] portsArray = new String[0];
         String osName = CodeRhino.getOS();
         switch (osName) {
             case "windows":
-                portNames = getWindowsPortNames();
+                portsArray = getWindowsPortNames();
                 break;
             case "linux":
-                portNames = getLinuxPortNames();
+                portsArray = getLinuxPortNames();
                 break;
             case "mac":
-                portNames = getMacPortNames();
+                portsArray = getMacPortNames();
                 break;
             case "not-supported":
                 return "Your operating system is not supported currently.";
         }
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.addAll(Arrays.asList(portsArray));
 
-        return StringUtils.join(portNames, ",");
+        return jsonArray.toJSONString();
     }
 
     /**

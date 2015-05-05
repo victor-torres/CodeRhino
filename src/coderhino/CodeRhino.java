@@ -66,6 +66,7 @@ public class CodeRhino {
         HashMap<String, String> dictionary = RunCommand.RunCommand(command);
         JSONObject json = new JSONObject();
         String output = json.toJSONString(dictionary);
+        
         return output;
     }
 }

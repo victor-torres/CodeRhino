@@ -24,7 +24,8 @@ Check if the scan is being executed yet. If it's done, the following function sh
 ```
 CodeRhino.isScanning()
 ```
-Get the list of available serial ports comma separated.
+Get the list of available serial ports in a JSON list format.
+Example: `["/dev/tty1", "/dev/tty2"]`.
 ```
 CodeRhino.getPorts()
 ```
