@@ -81,6 +81,22 @@ CodeRhino.isBusy();
 
 This will return `true` or `false` depending on those three other individual conditions.
 
+### Check Operating System's name and architecture
+
+You can get clues on which executable you should download and run with your CodeRhino Applet. Here is two killer functions that will help you out:
+
+```JavaScript
+CodeRhino.getOS();
+```
+
+getOS() will return `'windows'`, `'linux'`, `'mac'` or `'not-supported'`.
+
+```JavaScript
+CodeRhino.getArch();
+```
+
+getArch() will return `'32'`, `'64'` or `'not-supported'`.
+
 ## JavaScript callback function
 
 You can also use JavaScript callback functions with scanPorts(), downloadFile() and runCommand() methods.
