@@ -38,6 +38,14 @@ public class CodeRhinoApplet extends Applet {
     }
 
     /**
+     * Tells if the Applet is running any command or has any command scheduled.
+     * @return boolean.
+     */
+    public boolean isBusy() {
+        return download || run || scan;
+    }
+
+    /**
      * Callbacks JavaScript function.
      * @param callback JavaScript callback function name.
      */
