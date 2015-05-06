@@ -1,4 +1,4 @@
-# CodeRhino
+# ![CodeRhino logo](https://cloud.githubusercontent.com/assets/3674112/7498819/006a7244-f3fa-11e4-9b75-9b4a7e7d5e5b.png)
 Java Applet for running backend executables through JavaScript and webpages.
 
 ## Embedding CodeRhino in your site
@@ -50,8 +50,11 @@ CodeRhino.isDownloading();
 ### Run a system command from browser
 Try to run a list command. In Windows you could use `dir`. In Unix-based systems such as Mac OS X and GNU Linux you can just use `ls`.
 ```JavaScript
-CodeRhino.runCommand("ls");
+CodeRhino.runCommand("ls basedir/");
 ```
+`basedir/` is replaced by the directory where downloads are made.
+
+
 Check if the command is still running. If it's done, the following function should return `false`.
 ```JavaScript
 CodeRhino.isRunning();
@@ -107,8 +110,10 @@ function commandCallback() {
   console.log('stdError:  ' + output['stdError']);
 }
 
-CodeRhino.runCommand('ls', 'commandCallback');
+CodeRhino.runCommand('ls basedir/', 'commandCallback');
 ```
+
+`basedir/` is replaced by the directory where downloads are made.
 
 ### Important note
 
@@ -149,8 +154,12 @@ $ keytool -selfcert -keystore mykeystore -alias myalias
 $ jarsigner -keystore mykeystore CodeRhino.jar myalias
 ```
 
+## Special Thanks
+
+- Lucas Limeira ([@lucasalveslm](https://github.com/lucasalveslm)) - Support and testing
+- Emerson Yalli ([@emersonyalli](https://github.com/EmersonYalli)) - CodeRhino logo
+
 ## More information
 
 For more information and help, visit our [Wiki](http://github.com/victor-torres/CodeRhino/wiki/).
-
 
