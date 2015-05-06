@@ -71,6 +71,16 @@ output["stdInput"];
 output["stdError"];
 ```
 
+### Check if CodeRhino is busy
+
+Instead of doing `CodeRhino.isScanning()`, `CodeRhino.isDownloading()` or `CodeRhino.isRunning()`, you can just execute:
+
+```JavaScript
+CodeRhino.isBusy();
+```
+
+This will return `true` or `false` depending on those three other individual conditions.
+
 ## JavaScript callback function
 
 You can also use JavaScript callback functions with scanPorts(), downloadFile() and runCommand() methods.
