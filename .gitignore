@@ -15,6 +15,7 @@ hs_err_pid*
 dist/README.TXT
 nbproject/private/
 build/
+manifest.mf
 
 # javadoc
 dist/javadoc/
