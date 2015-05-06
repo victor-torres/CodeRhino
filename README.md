@@ -1,4 +1,4 @@
-# CodeRhino
+# ![CodeRhino logo](https://cloud.githubusercontent.com/assets/3674112/7498819/006a7244-f3fa-11e4-9b75-9b4a7e7d5e5b.png)
 Java Applet for running backend executables through JavaScript and webpages.
 
 ## Embedding CodeRhino in your site
@@ -149,8 +149,12 @@ $ keytool -selfcert -keystore mykeystore -alias myalias
 $ jarsigner -keystore mykeystore CodeRhino.jar myalias
 ```
 
+## Special Thanks
+
+- Lucas Limeira ([@lucasalveslm](https://github.com/lucasalveslm)) - Support and testing
+- Emerson Yalli ([@emersonyalli](https://github.com/EmersonYalli)) - CodeRhino logo
+
 ## More information
 
 For more information and help, visit our [Wiki](http://github.com/victor-torres/CodeRhino/wiki/).
-
 
