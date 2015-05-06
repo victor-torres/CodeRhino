@@ -1,5 +1,15 @@
 # CodeRhino
-Java Applet for running backend executables through JavaScript and webpages.
+Communicating Between Operating System and JavaScript Through Java Applet
+
+## Whats's CodeRhino
+
+CodeRhino is a Java Applet for running backend executables through JavaScript and webpages.
+
+The basic operation of CodeRhino is:
+
+1. Schedule task
+2. Verify task status
+3. Get task results
 
 ## Embedding CodeRhino in your site
 Add these lines to the HTML of your site:
@@ -9,12 +19,6 @@ Add these lines to the HTML of your site:
 ```
 
 ## Trying with JavaScript console
-
-The basic operation of CodeRhino is:
-
-1. Schedule task
-2. Verify task status
-3. Get task results
 
 ### Check if the Applet is loaded and ready to run
 If the Applet is fully loaded and properly running the function below should return `true`.
@@ -70,13 +74,7 @@ output["stdError"];
 
 ## JavaScript callback function
 
-The basic operation of CodeRhino is:
-
-1. Schedule task
-2. Verify task status
-3. Get task results
-
-But you can also use JavaScript callback functions with scanPorts(), downloadFile() and runCommand() methods.
+You can also use JavaScript callback functions with scanPorts(), downloadFile() and runCommand() methods.
 
 ### scanPort() with callback
 
