@@ -50,8 +50,11 @@ CodeRhino.isDownloading();
 ### Run a system command from browser
 Try to run a list command. In Windows you could use `dir`. In Unix-based systems such as Mac OS X and GNU Linux you can just use `ls`.
 ```JavaScript
-CodeRhino.runCommand("ls");
+CodeRhino.runCommand("ls basedir/");
 ```
+`basedir/` is replaced by the directory where downloads are made.
+
+
 Check if the command is still running. If it's done, the following function should return `false`.
 ```JavaScript
 CodeRhino.isRunning();
@@ -107,8 +110,10 @@ function commandCallback() {
   console.log('stdError:  ' + output['stdError']);
 }
 
-CodeRhino.runCommand('ls', 'commandCallback');
+CodeRhino.runCommand('ls basedir/', 'commandCallback');
 ```
+
+`basedir/` is replaced by the directory where downloads are made.
 
 ### Important note
 
