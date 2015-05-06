@@ -1,5 +1,7 @@
 package coderhino;
 
+import netscape.javascript.JSObject;
+
 import java.applet.Applet;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,7 +9,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import netscape.javascript.JSObject;
 
 public class CodeRhinoApplet extends Applet {
 
