@@ -107,7 +107,7 @@ function commandCallback() {
   console.log('stdError:  ' + output['stdError']);
 }
 
-CodeRhino.runCommand('ls', 'commandCallback);
+CodeRhino.runCommand('ls', 'commandCallback');
 ```
 
 ### Important note
