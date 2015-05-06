@@ -14,6 +14,7 @@ public class CodeRhinoApplet extends Applet {
 
     public boolean ready = false;
     public String osName = "";
+    public String osArch = "";
 
     public boolean download = false;
     public String downloadFilename = "";
@@ -170,11 +171,20 @@ public class CodeRhinoApplet extends Applet {
         return osName;
     }
 
+    /**
+     * Gets Operating System's architecture.
+     * @return String Operating System's architecture or 'not-supported'.
+     */
+    public String getArch() {
+        return osArch;
+    }
+
     @Override
     public void init() {
 
         ready = true;
         osName = CodeRhino.getOS();
+        osArch = CodeRhino.getArch();
 
         // Creates Timer Task which will run every 500 ms.
         Timer timer = new Timer();

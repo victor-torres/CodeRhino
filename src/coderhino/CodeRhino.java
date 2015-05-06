@@ -45,6 +45,25 @@ public class CodeRhino {
     }
 
     /**
+     * Gets operating system's architecture.
+     * OS's architecture's in ['32', '64'].
+     * @return String OS's architecture or 'not-supported'.
+     */
+    public static String getArch(){
+
+        String os;
+        os = System.getProperty("os.arch").toLowerCase();
+
+        if(os.contains("86") || os.contains("32")){
+            return "32";
+        } else if(os.contains("64")) {
+            return "64";
+        } else {
+            return "not-supported";
+        }
+    }
+
+    /**
      * Gets available serial ports' list.
      * @return String Serial ports' list.
      */
@@ -67,7 +86,7 @@ public class CodeRhino {
         HashMap<String, String> dictionary = RunCommand.RunCommand(command);
         JSONObject json = new JSONObject();
         String output = json.toJSONString(dictionary);
-        
+
         return output;
     }
 }
