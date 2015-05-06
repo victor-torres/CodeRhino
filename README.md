@@ -118,9 +118,10 @@ CodeRhino.runCommand('ls', 'commandCallback);
 
 ### Important note
 
-Do not forget to feedback your application's users about the actions that's being executed.
-In example, if a user clicks `download` button, disable that button and show him a message like `download has been started`.
+Do not forget to feedback your application's users about the actions that are being executed.
+For example, if a user clicks a `download` button, disable that button and show him a message like `download has been started`.
 A task cannot be started if there's another task of the same kind being executed or scheduled.
+When the download is finished, show him another message like `download has been completed` and reactivate the button.
 
 
 
