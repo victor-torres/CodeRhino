@@ -117,5 +117,40 @@ For example, if a user clicks a `download` button, disable that button and show 
 A task cannot be started if there's another task of the same kind being executed or scheduled.
 When the download is finished, show him another message like `download has been completed` and reactivate the button.
 
+## Development
+
+### Build JAR
+
+We currently use NetBeans to build our JAR files. The repository itself is a NetBeans project, so you can download it and open in the application. Once open, click `Build` or `Clear and Build` to generate new JAR files.
+
+You can find an already build JAR in `dist/CodeRhino.jar`.
+
+### Sign JAR
+
+You should buy a Java Applet certificate with trusted dealers if you want to use the library in production mode with lot of public access. If you want to use it just for personal use or private intranets or web applications, it's just fine to self-sign JAR files.
+
+The file `dist/CodeRhino.jar` comes self-signed by default.
+
+#### Create the keystore
+
+```shell
+$ keytool -genkey -keystore mykeystore -alias myalias
+````
+
+#### Create the certificate
+
+```shell
+$ keytool -selfcert -keystore mykeystore -alias myalias
+````
+
+#### Sign JAR file
+
+```shell
+$ jarsigner -keystore mykeystore CodeRhino.jar myalias
+```
+
+## More information
+
+For more information and help, visit our [Wiki](http://github.com/victor-torres/CodeRhino/wiki/).
 
 
