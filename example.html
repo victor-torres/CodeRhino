@@ -309,65 +309,133 @@ sup {
 
 <applet id="CodeRhino" archive="dist/CodeRhino.jar" code="coderhino.CodeRhinoApplet" MAYSCRIPT width="0" height="0"></applet>
 
-<h1>CodeRhino</h1>
-<a href="https://github.com/victor-torres/CodeRhino">View on GitHub</a>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a id="user-content-coderhino" class="anchor" href="#coderhino" aria-hidden="true"><span class="octicon octicon-link"></span></a>CodeRhino</h1>
 
-<h2>Trying with JavaScript console</h2>
+<p>Java Applet for running backend executables through JavaScript and webpages.</p>
 
-<h3>Check if the Applet is loaded and ready to run</h3>
+<h2>
+<a id="user-content-embedding-coderhino-in-your-site" class="anchor" href="#embedding-coderhino-in-your-site" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedding CodeRhino in your site</h2>
 
-<p>If the Applet is fully loaded and properly running the function below should return <code>true</code>.<br/>
-<code>
-CodeRhino.isReady()
-</code><br/></p>
+<p>Add these lines to the HTML of your site:</p>
 
-<h3>Get a list of available serial ports</h3>
+<div class="highlight highlight-HTML"><pre>&lt;<span class="pl-ent">applet</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>CodeRhino<span class="pl-pds">"</span></span> <span class="pl-e">archive</span>=<span class="pl-s"><span class="pl-pds">"</span>CodeRhino.jar<span class="pl-pds">"</span></span> <span class="pl-e">code</span>=<span class="pl-s"><span class="pl-pds">"</span>coderhino.CodeRhinoApplet<span class="pl-pds">"</span></span>
+  <span class="pl-e">MAYSCRIPT</span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">applet</span>&gt;</pre></div>
 
-<p>Start or schedule a serial port scanning.<br/>
-<code>
-CodeRhino.scanPorts()
-</code><br/>
-Check if the scan is being executed yet. If it's done, the following function should return <code>false</code>.<br/>
-<code>
-CodeRhino.isScanning()
-</code><br/>
-Get the list of available serial ports in a JSON list format.<br/>
-Example: <code>["/dev/tty1", "/dev/tty2"]</code>.<br/>
-<code>
-CodeRhino.getPorts()
-</code><br/></p>
+<h2>
+<a id="user-content-trying-with-javascript-console" class="anchor" href="#trying-with-javascript-console" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trying with JavaScript console</h2>
 
-<h3>Download a remote file</h3>
+<p>The basic operation of CodeRhino is:</p>
 
-<p>Start or schedule a file download.
-<code>
-CodeRhino.downloadFile("google_logo.png", "http://upload.wikimedia.org/wikipedia/commons/3/30/Googlelogo.png")
-</code><br/>
-Check if the download is done. If it's done, the following function should return <code>false</code>.<br/>
-<code>
-CodeRhino.isDownloading()
-</code><br/></p>
+<ol>
+<li>Schedule task</li>
+<li>Verify task status</li>
+<li>Get task results</li>
+</ol>
 
-<h3>Run a system command from browser</h3>
+<h3>
+<a id="user-content-check-if-the-applet-is-loaded-and-ready-to-run" class="anchor" href="#check-if-the-applet-is-loaded-and-ready-to-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>Check if the Applet is loaded and ready to run</h3>
 
-<p>Try to run a list command. In Windows you could use <code>dir</code>.<br/> In Unix-based systems such as Mac OS X and GNU Linux you can just use <code>ls</code>.<br/>
-<code>
-CodeRhino.runCommand("ls")
-</code><br/>
-Check if the command is still running. If it's done, the following function should return <code>false</code>.<br/>
-<code>
-CodeRhino.isRunning()
-</code><br/>
-Check if the downloaded file is in your command output.<br/>
-<code>
-CodeRhino.getCommandOutput()
-</code><br/>
-The command outputs are separated in Standard Input and Standard Error dictionary in a JSON String format.</p>
+<p>If the Applet is fully loaded and properly running the function below should return <code>true</code>.</p>
 
-<p><code>output = JSON.parse(CodeRhino.getCommandOutput())</code> could be used to parse the String into a JavaScript object so that you can access it as the following example:<br/>
-<code>
-output["stdInput"]<br/>
-output["stdError"]
-</code><br/></p>
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.isReady();</pre></div>
+
+<h3>
+<a id="user-content-get-a-list-of-available-serial-ports" class="anchor" href="#get-a-list-of-available-serial-ports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get a list of available serial ports</h3>
+
+<p>Start or schedule a serial port scanning.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.scanPorts();</pre></div>
+
+<p>Check if the scan is being executed yet. If it's done, the following function should return <code>false</code>.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.isScanning();</pre></div>
+
+<p>Get the list of available serial ports in a JSON list format.
+Example: <code>["/dev/tty1", "/dev/tty2"]</code>.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.getPorts();</pre></div>
+
+<h3>
+<a id="user-content-download-a-remote-file" class="anchor" href="#download-a-remote-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download a remote file</h3>
+
+<p>Start or schedule a file download.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.downloadFile(<span class="pl-s"><span class="pl-pds">"</span>google_logo.png<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>http://upload.wikimedia.org/wikipedia/commons/3/30/Googlelogo.png<span class="pl-pds">"</span></span>);</pre></div>
+
+<p>Check if the download is done. If it's done, the following function should return <code>false</code>.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.isDownloading();</pre></div>
+
+<h3>
+<a id="user-content-run-a-system-command-from-browser" class="anchor" href="#run-a-system-command-from-browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run a system command from browser</h3>
+
+<p>Try to run a list command. In Windows you could use <code>dir</code>. In Unix-based systems such as Mac OS X and GNU Linux you can just use <code>ls</code>.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.runCommand(<span class="pl-s"><span class="pl-pds">"</span>ls<span class="pl-pds">"</span></span>);</pre></div>
+
+<p>Check if the command is still running. If it's done, the following function should return <code>false</code>.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.isRunning();</pre></div>
+
+<p>Check if the downloaded file is in your command output.</p>
+
+<div class="highlight highlight-JavaScript"><pre>CodeRhino.getCommandOutput();</pre></div>
+
+<p>The command outputs are separated in Standard Input and Standard Error dictionary in a JSON String format.</p>
+
+<p><code>output = JSON.parse(CodeRhino.getCommandOutput());</code> could be used to parse the String into a JavaScript object so that you can access it as the following example:</p>
+
+<div class="highlight highlight-JavaScript"><pre>output[<span class="pl-s"><span class="pl-pds">"</span>stdInput<span class="pl-pds">"</span></span>];
+output[<span class="pl-s"><span class="pl-pds">"</span>stdError<span class="pl-pds">"</span></span>];</pre></div>
+
+<h2>
+<a id="user-content-javascript-callback-function" class="anchor" href="#javascript-callback-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>JavaScript callback function</h2>
+
+<p>You can also use JavaScript callback functions with scanPorts(), downloadFile() and runCommand() methods.</p>
+
+<h3>
+<a id="user-content-scanport-with-callback" class="anchor" href="#scanport-with-callback" aria-hidden="true"><span class="octicon octicon-link"></span></a>scanPort() with callback</h3>
+
+<div class="highlight highlight-JavaScript"><pre><span class="pl-k">function</span> <span class="pl-en">serialPortScanCallback</span>() {
+  <span class="pl-k">var</span> serialPorts <span class="pl-k">=</span> JSON.<span class="pl-c1">parse</span>(CodeRhino.getPorts());
+  <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Serial ports: <span class="pl-pds">'</span></span> <span class="pl-k">+</span> serialPorts.<span class="pl-c1">join</span>(<span class="pl-s"><span class="pl-pds">"</span>, <span class="pl-pds">"</span></span>));
+}
+
+CodeRhino.scanPorts(<span class="pl-s"><span class="pl-pds">'</span>serialPortScanCallback<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="user-content-downloadfile-with-callback" class="anchor" href="#downloadfile-with-callback" aria-hidden="true"><span class="octicon octicon-link"></span></a>downloadFile() with callback</h3>
+
+<div class="highlight highlight-JavaScript"><pre><span class="pl-k">function</span> <span class="pl-en">downloadCallback</span>() {
+  <span class="pl-k">var</span> filename <span class="pl-k">=</span> CodeRhino.getFilename();
+  <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>File "<span class="pl-pds">'</span></span> <span class="pl-k">+</span> filename <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span>" has been downloaded.<span class="pl-pds">'</span></span>);
+}
+
+CodeRhino.downloadFile(
+  <span class="pl-s"><span class="pl-pds">'</span>document.pdf<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>http://www.company.com/document_link.pdf<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>downloadCallback<span class="pl-pds">'</span></span>
+);</pre></div>
+
+<h3>
+<a id="user-content-runcommand-with-callback" class="anchor" href="#runcommand-with-callback" aria-hidden="true"><span class="octicon octicon-link"></span></a>runCommand() with callback</h3>
+
+<div class="highlight highlight-JavaScript"><pre><span class="pl-k">function</span> <span class="pl-en">commandCallback</span>() {
+  <span class="pl-k">var</span> output <span class="pl-k">=</span> JSON.<span class="pl-c1">parse</span>(CodeRhino.getCommandOutput());
+  <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>stdInput:  <span class="pl-pds">'</span></span> <span class="pl-k">+</span> output[<span class="pl-s"><span class="pl-pds">'</span>stdInput<span class="pl-pds">'</span></span>]);
+  <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>stdError:  <span class="pl-pds">'</span></span> <span class="pl-k">+</span> output[<span class="pl-s"><span class="pl-pds">'</span>stdError<span class="pl-pds">'</span></span>]);
+}
+
+CodeRhino.runCommand(<span class="pl-s"><span class="pl-pds">'</span>ls<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>commandCallback<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="user-content-important-note" class="anchor" href="#important-note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important note</h3>
+
+<p>Do not forget to feedback your application's users about the actions that are being executed.
+For example, if a user clicks a <code>download</code> button, disable that button and show him a message like <code>download has been started</code>.
+A task cannot be started if there's another task of the same kind being executed or scheduled.
+When the download is finished, show him another message like <code>download has been completed</code> and reactivate the button.</p>
+</article>
 </body>
 </html>
